@@ -45,7 +45,14 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
 
 /* image slide */
 .slide.img .stage{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;padding:6px 0 14px}
-.slide.img .stage img{max-width:100%;max-height:100%;object-fit:contain;border:1px solid var(--line);background:var(--cream);padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.slide.img .stage img{max-width:100%;max-height:100%;object-fit:contain;border:1px solid var(--line);background:var(--cream);padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.07);cursor:zoom-in}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(20,18,16,.93);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:100;cursor:zoom-out;padding:26px}
+.lb.on{display:flex}
+.lb img{max-width:94vw;max-height:82vh;object-fit:contain;background:#fff;padding:6px}
+.lb .lbcap{color:#eae6e0;font-size:.8rem;line-height:1.4;margin:16px 0 0;max-width:820px;text-align:center}
+.lb .lbx{position:absolute;top:14px;right:20px;color:#fff;font-size:2rem;line-height:1;background:none;border:0;cursor:pointer}
 .sec-tag{margin:0 0 4px;color:var(--rust);text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;font-weight:600;flex:0 0 auto}
 .cap{flex:0 0 auto;max-width:760px}
 .cap h3{font-weight:500;font-size:clamp(1.1rem,3.2vw,1.45rem);margin:0 0 6px}
@@ -480,6 +487,8 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
 
 <div class="foot"><p>&copy; 2026 ShadowDog Digital Studios. All Rights Reserved. The design, text, and arrangement of this presentation are the exclusive property of ShadowDog Digital Studios, which holds explicit rights to this material. Historical images shown are in the public domain and credited to their original sources.</p></div>
 
+<div class="lb" id="lb"><button class="lbx" aria-label="Close">&times;</button><img alt=""><p class="lbcap"></p></div>
+
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide'));
@@ -511,6 +520,16 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
     if(x0===null)return; var dx=e.changedTouches[0].clientX-x0;
     if(Math.abs(dx)>45){ dx<0?show(i+1):show(i-1); } x0=null;
   },{passive:true});
+  // lightbox (click any gallery image to enlarge)
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img'), lbCap=lb.querySelector('.lbcap');
+  function openLB(src,cap){ lbImg.src=src; lbCap.textContent=cap||''; lb.classList.add('on'); }
+  function closeLB(){ lb.classList.remove('on'); lbImg.removeAttribute('src'); }
+  document.getElementById('deck').addEventListener('click',function(e){
+    var im=e.target.closest ? e.target.closest('.slide.img .stage img') : null;
+    if(im){ var sl=im.closest('.slide'); var cr=sl&&sl.querySelector('.cred'); openLB(im.src, cr?cr.textContent:''); }
+  });
+  lb.addEventListener('click',function(e){ if(e.target!==lbImg) closeLB(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('on')) closeLB(); });
   show(i);
 })();
 </script>
