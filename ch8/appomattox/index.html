@@ -492,5 +492,102 @@ const rb=document.getElementById('retBtn');if(rb)rb.onclick=()=>{if(window.__goB
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire);else wire();
 })();
 </script>
+<!-- SDS-HIGHLIGHTER v1 START -->
+<style id="sdshl-style">
+mark.sds-hl{background:#ffe066;color:#111;border-radius:2px;padding:0 .5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+body.sdshl-on mark.sds-hl{cursor:pointer}
+body.sdshl-on ::selection{background:#ffe066;color:#111}
+#sdshl-btn{position:fixed;right:14px;bottom:64px;z-index:140;border:1px solid #caa23a;background:rgba(20,22,20,.92);color:#ffe066;border-radius:999px;padding:9px 14px;font:600 13px/1 system-ui,-apple-system,sans-serif;cursor:pointer;display:flex;gap:7px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#sdshl-btn.on{background:#ffe066;color:#1a1205;border-color:#ffe066}
+#sdshl-btn .ic{font-size:15px;line-height:1}
+#sdshl-bar{position:fixed;right:14px;bottom:106px;z-index:140;background:rgba(20,22,20,.96);color:#eee;border:1px solid #444;border-radius:10px;padding:10px 12px;font:400 12px/1.45 system-ui,-apple-system,sans-serif;max-width:230px;display:none;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+#sdshl-btn.on ~ #sdshl-bar{display:block}
+#sdshl-bar b{color:#ffe066}
+#sdshl-bar button{margin-top:8px;background:none;border:1px solid #555;color:#ddd;border-radius:6px;padding:5px 9px;font:inherit;cursor:pointer}
+@media print{#sdshl-btn,#sdshl-bar{display:none!important}}
+</style>
+<button id="sdshl-btn" type="button" aria-pressed="false"><span class="ic">&#9998;</span><span class="lbl">Highlight</span></button>
+<div id="sdshl-bar">Highlighter is <b>on</b>. Select text to highlight it. Click a highlight to remove it. Your highlights save on this device.<br><button id="sdshl-clear">Clear all highlights</button></div>
+<script id="sdshl-js">
+(function(){
+  if(window.__sdsHL)return; window.__sdsHL=1;
+  var KEY='sdshl::'+location.pathname;
+  var btn=document.getElementById('sdshl-btn'), on=false;
+  function slides(){var s=document.querySelectorAll('.slide');return s.length?[].slice.call(s):[document.body];}
+  function okParent(p){return p && !p.closest('script,style,#sdshl-btn,#sdshl-bar,.topbar,.foot,.nav,.lb,.actbox,input,textarea,button');}
+  function textNodes(root){var a=[],w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    if(!n.nodeValue)return 2; if(!okParent(n.parentElement))return 2; return 1;}});var n;while(n=w.nextNode())a.push(n);return a;}
+  function slideText(sl){return textNodes(sl).map(function(n){return n.nodeValue;}).join('');}
+  function globalStart(sl,node){var t=textNodes(sl),p=0;for(var i=0;i<t.length;i++){if(t[i]===node)return p;p+=t[i].nodeValue.length;}return -1;}
+  function locate(sl,off){var t=textNodes(sl),p=0;for(var i=0;i<t.length;i++){var L=t[i].nodeValue.length;if(off<=p+L)return{node:t[i],off:off-p};p+=L;}var last=t[t.length-1];return last?{node:last,off:last.nodeValue.length}:null;}
+  function wrapRange(range){
+    var root=range.commonAncestorContainer; if(root.nodeType===3)root=root.parentNode;
+    var nodes=textNodes(root).filter(function(n){try{return range.intersectsNode(n);}catch(e){return false;}});
+    nodes.forEach(function(n){
+      var s=(n===range.startContainer)?range.startOffset:0;
+      var e=(n===range.endContainer)?range.endOffset:n.nodeValue.length;
+      if(e<=s)return;
+      var r=document.createRange();r.setStart(n,s);r.setEnd(n,e);
+      var m=document.createElement('mark');m.className='sds-hl';
+      try{r.surroundContents(m);}catch(err){}
+    });
+  }
+  function nthIndexOf(hay,needle,n){var idx=-1;for(var k=0;k<=n;k++){idx=hay.indexOf(needle,idx+1);if(idx<0)return -1;}return idx;}
+  function save(){
+    var out=[];
+    slides().forEach(function(sl,si){
+      var marks=sl.querySelectorAll('mark.sds-hl');if(!marks.length)return;
+      var full=slideText(sl);
+      marks.forEach(function(m){
+        var t=m.textContent;if(!t)return;
+        var inner=textNodes(m);if(!inner.length)return;
+        var gs=globalStart(sl,inner[0]);if(gs<0)return;
+        // occurrence index = how many times t appears before gs
+        var n=0,idx=-1;while(true){idx=full.indexOf(t,idx+1);if(idx<0||idx>=gs)break;n++;}
+        out.push({s:si,t:t,n:n});
+      });
+    });
+    try{localStorage.setItem(KEY,JSON.stringify(out));}catch(e){}
+  }
+  function apply(list){
+    var bySlide={};list.forEach(function(h){(bySlide[h.s]=bySlide[h.s]||[]).push(h);});
+    slides().forEach(function(sl,si){
+      var hs=bySlide[si];if(!hs)return;
+      if(sl.querySelector('mark.sds-hl'))return; // already applied
+      var full=slideText(sl);
+      hs.forEach(function(h){
+        var start=nthIndexOf(full,h.t,h.n);if(start<0)return;
+        var a=locate(sl,start),b=locate(sl,start+h.t.length);if(!a||!b)return;
+        var r=document.createRange();try{r.setStart(a.node,a.off);r.setEnd(b.node,b.off);}catch(e){return;}
+        wrapRange(r);
+      });
+    });
+  }
+  function load(){try{var l=JSON.parse(localStorage.getItem(KEY)||'[]');apply(l);}catch(e){}}
+  // interactions
+  btn.addEventListener('click',function(){on=!on;btn.classList.toggle('on',on);document.body.classList.toggle('sdshl-on',on);btn.setAttribute('aria-pressed',on);btn.querySelector('.lbl').textContent=on?'Highlighting':'Highlight';});
+  document.addEventListener('mouseup',function(e){
+    if(!on)return;
+    if(e.target.closest&&e.target.closest('#sdshl-btn,#sdshl-bar'))return;
+    var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
+    var r=sel.getRangeAt(0);if(r.collapsed||!r.toString().trim())return;
+    // only within slide content
+    var anc=r.commonAncestorContainer;anc=anc.nodeType===3?anc.parentElement:anc;
+    if(!okParent(anc))return;
+    wrapRange(r);sel.removeAllRanges();save();
+  });
+  document.addEventListener('click',function(e){
+    if(!on)return;var m=e.target.closest&&e.target.closest('mark.sds-hl');if(!m)return;
+    e.preventDefault();e.stopPropagation();
+    var parent=m.parentNode;while(m.firstChild)parent.insertBefore(m.firstChild,m);parent.removeChild(m);parent.normalize();save();
+  },true);
+  var clr=document.getElementById('sdshl-clear');
+  if(clr)clr.addEventListener('click',function(){document.querySelectorAll('mark.sds-hl').forEach(function(m){var p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);p.normalize();});try{localStorage.removeItem(KEY);}catch(e){}});
+  // apply saved highlights after render
+  if(document.readyState==='complete')setTimeout(load,120);else window.addEventListener('load',function(){setTimeout(load,120);});
+})();
+</script>
+<!-- SDS-HIGHLIGHTER v1 END -->
+
 </body>
 </html>
