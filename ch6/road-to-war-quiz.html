@@ -71,9 +71,7 @@
     body{background:#fff}
     .screenonly{display:none!important}
     .wrap{max-width:100%;padding:0}
-    #printdoc{display:block}                 /* default print = student questions, NO key */
-    body.pm-key #printdoc{display:none}
-    body.pm-key #printkey{display:block}
+    #printdoc{display:block}                 /* default print = student questions only */
     body.pm-cert #printdoc{display:none}
     body.pm-cert #cert{display:block}
     .pmast{border-bottom:3px solid var(--rust);padding-bottom:8px;margin-bottom:14px}
@@ -114,12 +112,7 @@
         <button class="lvl" data-lv="B"><span class="lv">Level B</span><b>Medium</b><span>A balanced challenge.</span></button>
         <button class="lvl" data-lv="C"><span class="lv">Level C</span><b>Hard</b><span>For a real test of your skills.</span></button>
       </div>
-      <p class="tophint">Tip: a 30-minute timer starts when you choose. You can <button class="btn ghost" style="padding:6px 12px" onclick="printStudent()">Print a paper copy</button> instead (no answers shown).</p>
-      <div class="teacherbox">
-        <div class="tl">For the teacher</div>
-        <button class="btn ghost" style="padding:8px 14px" onclick="printKey()">Print answer key</button>
-        <span style="color:var(--muted);font-size:13px;margin-left:8px">Prints the key only — don’t hand this one to students.</span>
-      </div>
+      <p class="tophint">Tip: a 30-minute timer starts when you choose. You can <button class="btn ghost" style="padding:6px 12px" onclick="printStudent()">Print a paper copy</button> instead.</p>
     </div>
 
     <!-- QUIZ -->
@@ -169,7 +162,6 @@
 
   <!-- ============ PRINT blocks (filled by JS) ============ -->
   <div class="printblock" id="printdoc"></div>   <!-- student copy: questions only -->
-  <div class="printblock" id="printkey"></div>   <!-- teacher copy: answer key -->
   <div class="printblock" id="cert"></div>       <!-- student completion certificate -->
 
 </div>
@@ -272,21 +264,9 @@ function today(){return new Date().toLocaleDateString(undefined,{year:'numeric',
   document.getElementById('printdoc').innerHTML=h;
 })();
 
-// ---- TEACHER print copy: answer key only (separate block) ----
-(function(){
-  var h='<div class="keybox"><h2>Teacher Answer Key — The Road to War</h2>'+
-     '<table class="keytbl"><tr><td><b>#</b></td><td><b>Topic</b></td><td><b>Ans</b></td><td><b>Why</b></td></tr>';
-  DATA.forEach(function(q,i){
-    h+='<tr><td>'+(i+1)+'</td><td>'+q.topic+'</td><td><b>'+LT[q.correct]+'</b></td><td>'+q.exp+'</td></tr>';
-  });
-  h+='</table><p style="font-size:10px;color:#555;margin-top:10px">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved.</p></div>';
-  document.getElementById('printkey').innerHTML=h;
-})();
-
 // ---- print mode helpers ----
-function printStudent(){document.body.classList.remove('pm-key','pm-cert');window.print();}
-function printKey(){document.body.classList.remove('pm-cert');document.body.classList.add('pm-key');window.print();}
-window.onafterprint=function(){document.body.classList.remove('pm-key','pm-cert');};
+function printStudent(){document.body.classList.remove('pm-cert');window.print();}
+window.onafterprint=function(){document.body.classList.remove('pm-cert');};
 
 // ---- student completion certificate ----
 function certHTML(name){
@@ -308,7 +288,7 @@ function makeCert(){
   var html=certHTML(name);
   document.getElementById('cert').innerHTML=html;                 // print block
   document.getElementById('certpreview').innerHTML=html;          // on-screen preview
-  document.body.classList.remove('pm-key');document.body.classList.add('pm-cert');
+  document.body.classList.add('pm-cert');
   setTimeout(function(){window.print();},200);
 }
 </script>
