@@ -54,13 +54,28 @@
   .score{font-size:54px;font-weight:800;color:var(--rust);font-family:system-ui,sans-serif}
   .rights{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.5;border-top:1px solid var(--line);padding-top:12px}
   .tophint{font-size:13px;color:var(--muted);margin-top:14px}
+  .teacherbox{margin-top:18px;border:1px dashed var(--line);border-radius:9px;padding:12px 15px;background:#fcfbf9}
+  .teacherbox .tl{font:800 11px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .namein{font:inherit;border:1px solid var(--line);border-radius:8px;padding:11px 13px;width:100%;max-width:340px;margin-bottom:10px}
+  /* certificate (screen preview + print) */
+  .certcard{border:3px double var(--rust);border-radius:10px;padding:34px 30px;text-align:center;background:#fff;max-width:640px;margin:14px auto 0}
+  .certcard .seal{font:800 11px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}
+  .certcard h3{font-size:30px;margin:10px 0 4px;letter-spacing:.01em}
+  .certcard .nm{font-size:30px;font-weight:800;color:var(--rust);border-bottom:2px solid var(--line);display:inline-block;padding:4px 20px 6px;margin:14px 0 8px;font-family:Georgia,serif}
+  .certcard .ln{color:var(--muted);font-size:15px;margin:3px 0}
+  .certcard .big{font-size:18px;margin:12px 0}
+  .certcard .foot{margin-top:18px;font-size:11px;color:var(--muted);line-height:1.5}
   /* ---------- PRINT ---------- */
-  .printonly{display:none}
+  .printblock{display:none}
   @media print{
     body{background:#fff}
     .screenonly{display:none!important}
-    .printonly{display:block}
     .wrap{max-width:100%;padding:0}
+    #printdoc{display:block}                 /* default print = student questions, NO key */
+    body.pm-key #printdoc{display:none}
+    body.pm-key #printkey{display:block}
+    body.pm-cert #printdoc{display:none}
+    body.pm-cert #cert{display:block}
     .pmast{border-bottom:3px solid var(--rust);padding-bottom:8px;margin-bottom:14px}
     .pmast h1{margin:0;font-size:22px}
     .pmeta{font-size:12px;color:#333;margin-top:4px}
@@ -71,11 +86,11 @@
     .pq .psrc{border-left:3px solid #999;padding-left:8px;font-style:italic;margin:6px 0}
     .pq ol{margin:6px 0 0 0}
     .pq li{margin:2px 0}
-    .pagebreak{page-break-before:always}
     .keybox{border:1px solid #333;padding:10px 14px}
     .keybox h2{margin:0 0 8px;font-size:16px}
     .keytbl{width:100%;border-collapse:collapse;font-size:12px}
     .keytbl td{border:1px solid #bbb;padding:3px 6px}
+    #cert .certcard{margin-top:40px}
   }
 </style>
 </head>
@@ -99,7 +114,12 @@
         <button class="lvl" data-lv="B"><span class="lv">Level B</span><b>Medium</b><span>A balanced challenge.</span></button>
         <button class="lvl" data-lv="C"><span class="lv">Level C</span><b>Hard</b><span>For a real test of your skills.</span></button>
       </div>
-      <p class="tophint">Tip: a 30-minute timer starts when you choose. You can <button class="btn ghost" style="padding:6px 12px" onclick="window.print()">Print a paper copy</button> instead.</p>
+      <p class="tophint">Tip: a 30-minute timer starts when you choose. You can <button class="btn ghost" style="padding:6px 12px" onclick="printStudent()">Print a paper copy</button> instead (no answers shown).</p>
+      <div class="teacherbox">
+        <div class="tl">For the teacher</div>
+        <button class="btn ghost" style="padding:8px 14px" onclick="printKey()">Print answer key</button>
+        <span style="color:var(--muted);font-size:13px;margin-left:8px">Prints the key only — don’t hand this one to students.</span>
+      </div>
     </div>
 
     <!-- QUIZ -->
@@ -131,7 +151,15 @@
         <p id="scoremsg" style="color:var(--muted)"></p>
         <div class="btnrow">
           <button class="btn" onclick="location.reload()">Try again</button>
-          <button class="btn ghost" onclick="window.print()">Print / Save PDF</button>
+        </div>
+        <div class="teacherbox" style="border-style:solid;border-color:var(--rust)">
+          <div class="tl" style="color:var(--rust)">Get your completion certificate</div>
+          <p style="margin:0 0 10px;color:var(--muted);font-size:14px">Type your full name, then save your certificate as a PDF to upload.</p>
+          <input class="namein" id="cname" placeholder="Your full name" autocomplete="name">
+          <div class="btnrow" style="margin-top:0">
+            <button class="btn" onclick="makeCert()">Create my certificate (PDF)</button>
+          </div>
+          <div id="certpreview"></div>
         </div>
       </div>
     </div>
@@ -139,8 +167,10 @@
     <div class="rights">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved. ShadowDog Digital Studios holds explicit rights to the design, text, and arrangement of this material. Historical images are public domain and credited to their sources.</div>
   </div>
 
-  <!-- ============ PRINT version (filled by JS) ============ -->
-  <div class="printonly" id="printdoc"></div>
+  <!-- ============ PRINT blocks (filled by JS) ============ -->
+  <div class="printblock" id="printdoc"></div>   <!-- student copy: questions only -->
+  <div class="printblock" id="printkey"></div>   <!-- teacher copy: answer key -->
+  <div class="printblock" id="cert"></div>       <!-- student completion certificate -->
 
 </div>
 
@@ -223,7 +253,10 @@ function finish(){
   document.getElementById('scoremsg').textContent='You scored '+pct+'%. '+msg;
 }
 
-// ---- build the print version (all questions in fixed order + answer key) ----
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function today(){return new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});}
+
+// ---- STUDENT print copy: questions only, fixed order, NO answers ----
 (function(){
   var h='<div class="pmast"><h1>The Road to War — Source Analysis Quiz</h1>'+
     '<div class="pmeta">Name: ____________________________  Period: ______  Date: __________ &nbsp;|&nbsp; 18 questions • 30 minutes</div></div>';
@@ -235,14 +268,49 @@ function finish(){
     q.opts.forEach(function(o){h+='<li>'+o+'</li>';});
     h+='</ol></div>';
   });
-  h+='<div class="pagebreak keybox"><h2>Teacher Answer Key — The Road to War</h2>'+
+  h+='<p style="font-size:10px;color:#555;margin-top:10px">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved. Historical images are public domain, credited to their sources.</p>';
+  document.getElementById('printdoc').innerHTML=h;
+})();
+
+// ---- TEACHER print copy: answer key only (separate block) ----
+(function(){
+  var h='<div class="keybox"><h2>Teacher Answer Key — The Road to War</h2>'+
      '<table class="keytbl"><tr><td><b>#</b></td><td><b>Topic</b></td><td><b>Ans</b></td><td><b>Why</b></td></tr>';
   DATA.forEach(function(q,i){
     h+='<tr><td>'+(i+1)+'</td><td>'+q.topic+'</td><td><b>'+LT[q.correct]+'</b></td><td>'+q.exp+'</td></tr>';
   });
-  h+='</table><p style="font-size:10px;color:#555;margin-top:10px">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved. Historical images are public domain, credited to their sources.</p></div>';
-  document.getElementById('printdoc').innerHTML=h;
+  h+='</table><p style="font-size:10px;color:#555;margin-top:10px">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved.</p></div>';
+  document.getElementById('printkey').innerHTML=h;
 })();
+
+// ---- print mode helpers ----
+function printStudent(){document.body.classList.remove('pm-key','pm-cert');window.print();}
+function printKey(){document.body.classList.remove('pm-cert');document.body.classList.add('pm-key');window.print();}
+window.onafterprint=function(){document.body.classList.remove('pm-key','pm-cert');};
+
+// ---- student completion certificate ----
+function certHTML(name){
+  var pct=Math.round(score/N*100);
+  return '<div class="certcard">'+
+    '<div class="seal">Promise &amp; Practice • U.S. History</div>'+
+    '<h3>Certificate of Completion</h3>'+
+    '<div class="ln">This certifies that</div>'+
+    '<div class="nm">'+esc(name)+'</div>'+
+    '<div class="big">has completed <b>The Road to War — Source Analysis Quiz</b></div>'+
+    '<div class="ln">Score: <b>'+score+' / '+N+'</b> ('+pct+'%) &nbsp;•&nbsp; '+today()+'</div>'+
+    '<div class="ln">Dred Scott • Kansas–Nebraska Act • John Brown</div>'+
+    '<div class="foot">&copy; 2026 ShadowDog Digital Studios. All Rights Reserved. ShadowDog Digital Studios holds explicit rights to the design, text, and arrangement of this material.</div>'+
+    '</div>';
+}
+function makeCert(){
+  var name=(document.getElementById('cname').value||'').trim();
+  if(!name){document.getElementById('cname').focus();document.getElementById('cname').style.borderColor='var(--no)';return;}
+  var html=certHTML(name);
+  document.getElementById('cert').innerHTML=html;                 // print block
+  document.getElementById('certpreview').innerHTML=html;          // on-screen preview
+  document.body.classList.remove('pm-key');document.body.classList.add('pm-cert');
+  setTimeout(function(){window.print();},200);
+}
 </script>
 </body>
 </html>
