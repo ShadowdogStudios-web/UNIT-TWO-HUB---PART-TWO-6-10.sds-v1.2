@@ -1,0 +1,304 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2 CER Organizer &mdash; Build Your Argument</title>
+<style>
+:root{--rust:#b1442f;--rust2:#8f3625;--ink:#1a1a1a;--body:#33302b;--mut:#7a7166;--hair:#e3ddd4;--page:#fbf8f2;--panel:#fff;--gold:#c99a4a}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--page);color:var(--body);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 48px}
+.head{background:linear-gradient(135deg,var(--rust),var(--rust2));color:#fff;border-radius:0 0 12px 12px;padding:22px 24px}
+.head .kick{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.9;font-weight:700}
+.head h1{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:5px 0 2px}
+.head .sub{opacity:.92;font-size:13.5px}
+.ident{display:flex;gap:14px;margin:12px 0 0;font-size:13px}.ident span{border-bottom:1px solid rgba(255,255,255,.5);flex:1;padding-bottom:2px}
+.q{background:#faf3e2;border:1px solid var(--gold);border-left:5px solid var(--gold);border-radius:10px;padding:14px 18px;margin:18px 0}
+.q .lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust2);font-weight:700;margin-bottom:4px}
+.q p{margin:0;font-family:Georgia,serif;font-size:20px;color:var(--ink);line-height:1.3}
+.intro{font-size:14px;color:var(--body);margin:12px 0}
+.choose{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 4px}
+.choose span{border:1px solid var(--hair);border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--ink)}
+.choose span::before{content:"\2610  ";color:var(--rust)}
+.box{border:1px solid var(--hair);border-left:5px solid var(--rust);border-radius:10px;background:var(--panel);padding:14px 16px;margin:12px 0}
+.box .bt{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--rust2);font-size:15px;letter-spacing:.01em}
+.box .n{display:inline-grid;place-items:center;width:24px;height:24px;background:var(--rust);color:#fff;border-radius:6px;font-size:13px}
+.box .g{font-size:13px;color:var(--mut);margin:6px 0 8px}
+.box .s{font-size:13px;color:var(--body);background:#faf7f0;border:1px dashed var(--hair);border-radius:6px;padding:8px 10px}
+.box .s b{color:var(--rust2)}
+.box .write{border-bottom:1px solid var(--hair);min-height:26px;margin:9px 0}
+.thesis{border-left-color:var(--gold)}
+.thesis .bt{color:#9a7016}.thesis .n{background:var(--gold)}
+.foot{margin-top:26px;padding-top:14px;border-top:1px solid var(--hair);text-align:center;font-size:11px;color:var(--mut);line-height:1.7}
+.foot b{color:var(--rust);text-transform:uppercase;letter-spacing:.05em;font-size:10.5px}
+@media print{body{background:#fff}.head{border-radius:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}.box{page-break-inside:avoid}}
+
+.wline{display:block;width:100%;border:0;border-bottom:1px solid var(--hair);background:transparent;font:inherit;color:var(--ink);padding:3px 2px;margin:5px 0;resize:none;min-height:26px;line-height:1.5}
+.wline:focus{outline:none;border-bottom-color:var(--rust);background:#fffdf8}
+#sdsbar{position:fixed;left:14px;bottom:16px;z-index:120;display:flex;gap:8px}
+#sdsbar button{border:1px solid var(--hair);background:#fff;color:var(--rust);border-radius:999px;padding:8px 13px;font:700 12.5px/1 inherit;cursor:pointer;box-shadow:0 3px 12px rgba(40,30,20,.14)}
+#sdsbar button:hover{border-color:var(--rust)}
+@media print{#sdsbar,#sdshl-btn,#sdshl-bar{display:none!important}.wline{border-bottom:1px solid #bbb}}
+</style></head><body>
+
+<!-- SDS-GATE v1 START -->
+<style id="sdsgate-style">
+#sdsgate{position:fixed;inset:0;z-index:2000;background:var(--page,#fbf8f2);display:flex;align-items:center;justify-content:center;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+#sdsgate .card{max-width:420px;width:100%;background:#fff;border:1px solid var(--hair,#e3ddd4);border-top:5px solid var(--rust,#b1442f);border-radius:14px;padding:30px 28px;box-shadow:0 18px 50px rgba(40,30,20,.18);text-align:center}
+#sdsgate .crest{display:inline-grid;place-items:center;width:46px;height:46px;border:2px solid var(--rust,#b1442f);color:var(--rust,#b1442f);border-radius:9px;font-family:Georgia,serif;font-weight:700;font-size:16px;margin-bottom:14px}
+#sdsgate h2{font-family:Georgia,serif;font-weight:400;font-size:22px;color:var(--ink,#1a1a1a);margin:0 0 4px}
+#sdsgate p.lead{font-size:13.5px;color:var(--mut,#7a7166);margin:0 0 18px}
+#sdsgate input{width:100%;border:1px solid var(--hair,#e3ddd4);border-radius:9px;padding:12px 14px;font-size:16px;text-align:center;letter-spacing:.02em}
+#sdsgate input:focus{outline:none;border-color:var(--rust,#b1442f);background:#fffdf8}
+#sdsgate button{margin-top:12px;width:100%;background:var(--rust,#b1442f);color:#fff;border:0;border-radius:9px;padding:12px;font:700 15px/1 inherit;cursor:pointer}
+#sdsgate button:hover{background:var(--rust2,#8f3625)}
+#sdsgate .msg{min-height:18px;margin-top:10px;font-size:13px;color:var(--rust,#b1442f);font-weight:600}
+#sdsgate .hint{margin-top:14px;font-size:11px;color:var(--mut,#7a7166)}
+#sdsgate.shake .card{animation:sdsk .4s}
+@keyframes sdsk{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+@media print{#sdsgate{display:none!important}}
+</style>
+<div id="sdsgate" role="dialog" aria-modal="true" aria-label="Locked resource">
+  <div class="card">
+    <div class="crest">P&amp;P</div>
+    <h2>This resource is locked</h2>
+    <p class="lead">Enter the password your teacher gives your class.</p>
+    <input id="sdsgate-pw" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" aria-label="Class password" placeholder="Class password">
+    <button id="sdsgate-go" type="button">Unlock</button>
+    <div class="msg" id="sdsgate-msg" aria-live="polite"></div>
+    <div class="hint">Promise &amp; Practice &middot; Mr. Stonis</div>
+  </div>
+</div>
+<script id="sdsgate-js">
+(function(){
+  // Compact SHA-256 (ASCII) — returns lowercase hex. Matches standard SHA-256.
+function sdsSha256(ascii){
+  function rr(v,a){return (v>>>a)|(v<<(32-a));}
+  var mp=Math.pow, maxWord=mp(2,32), result='';
+  var words=[], asciiBitLength=ascii.length*8;
+  var hash=sdsSha256.h=sdsSha256.h||[], k=sdsSha256.k=sdsSha256.k||[], primeCounter=k.length;
+  var isComposite={};
+  for(var candidate=2;primeCounter<64;candidate++){
+    if(!isComposite[candidate]){
+      for(var i=0;i<313;i+=candidate){isComposite[i]=candidate;}
+      hash[primeCounter]=(mp(candidate,.5)*maxWord)|0;
+      k[primeCounter++]=(mp(candidate,1/3)*maxWord)|0;
+    }
+  }
+  ascii+='\x80';
+  while(ascii.length%64-56)ascii+='\x00';
+  for(i=0;i<ascii.length;i++){
+    var j=ascii.charCodeAt(i); if(j>>8)return;
+    words[i>>2]|=j<<((3-i)%4)*8;
+  }
+  words[words.length]=((asciiBitLength/maxWord)|0);
+  words[words.length]=(asciiBitLength);
+  for(j=0;j<words.length;){
+    var w=words.slice(j,j+=16), oldHash=hash;
+    hash=hash.slice(0,8);
+    for(i=0;i<64;i++){
+      var w15=w[i-15], w2=w[i-2];
+      var a=hash[0], e=hash[4];
+      var temp1=hash[7]+(rr(e,6)^rr(e,11)^rr(e,25))+((e&hash[5])^((~e)&hash[6]))+k[i]+
+        (w[i]=(i<16)?w[i]:(w[i-16]+(rr(w15,7)^rr(w15,18)^(w15>>>3))+w[i-7]+(rr(w2,17)^rr(w2,19)^(w2>>>10)))|0);
+      var temp2=(rr(a,2)^rr(a,13)^rr(a,22))+((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+      hash=[(temp1+temp2)|0].concat(hash); hash[4]=(hash[4]+temp1)|0;
+    }
+    for(i=0;i<8;i++){hash[i]=(hash[i]+oldHash[i])|0;}
+  }
+  for(i=0;i<8;i++){
+    for(j=3;j+1;j--){var b=(hash[i]>>(j*8))&255;result+=((b<16)?'0':'')+b.toString(16);}
+  }
+  return result;
+}
+  function init(){
+  // ===== access-gate config =====
+  var ANCHOR = Date.UTC(2026,10,3);     // window 0 begins (Nov 3 2026 UTC)
+  var WINDOW_DAYS = 30;
+  var ROUTE = true;                 // true = reveal matching [data-track] section
+  var SCHEDULE = [{"bdf1be33922aa2c414d147cdf3076e78907d8b18f6e533632f87f0f9963aed64": "regular", "12f074e74a390db68e649afae0e512c83c4c241ff3d50b249b1480678f08d00c": "honors", "93ad6e5c97dae4ce913fc4ba48f1a8f6c2ccf31f6b50a4fff1842a610033c283": "regular", "60cad2373b6eb4216a96a3febda46b70aa2a792c93f062760e72784dc93f2bdc": "honors", "ab674e3f446415556f5a21df2bb98912a7da44212a15fd27d4556bd0ab267690": "regular"}, {"8b8fd2a6fe5b6aae0c762d7060e893208676a3524e35f3fc5158ffb4f93b968e": "regular", "63ab3d902433933f82f12c9efe5fc3dfe994e552acb8703729828fd3c379121f": "honors", "1681dee7b51d19245420ab8e908ff79bb5f8d7741ba916f5e1550caf5ba73dda": "regular", "620662a0df2e2442c62bf686d1b3fc481c3f5157041c6498b149a10bb0c6b992": "honors", "91d2a3d8602c715573e361fa3a90c4003f9a5b2612920ebbdf491c84f245bf4d": "regular"}, {"0d4128626b8deb57f40485d4bff33ca403fa295429dc76fafccf71dcc006f12f": "regular", "d05bf53d6f5a9403d10d5837d4c3dcb1e61e46a608b61f697122e9ab9b83e856": "honors", "c5ad9ad56c80b1ea5e63d394bd3d7e401d58d0473cae504ac85df37aa5ea1885": "regular", "49e0a25c5eb0f865366fd773d502a4f6ab423020b6e3efb06f4e362403630cdf": "honors", "d26ede5fc29ad5611c044aef54de8b02dfaa55e836de363cc245dc52c358f0a0": "regular"}, {"2ecd48ef0773809a211630b9bec01357dbfb90e06eba6a8cfbddf30cd2be99a6": "regular", "3a7c5975547b190da361a726b69744342c28e1090986c4c0073b7f25b547521d": "honors", "621ffee4287e2e7157cfeb0c342275a09abbed61d663b318607b916eda531f44": "regular", "e0000c5cb423c7855ecce1343ca5cfac6ee7d10e8f1dbb4d823af62964c4a97d": "honors", "7086db1f150df00b79271aa0421d15e013dd0e45055e08e220190077c45ddaae": "regular"}, {"e3a629b6986f05184e87239d4c38169e74c0abf587df5065e806cd30c1e90cbc": "regular", "16ffc54636d320016f6f35731ee07c3958bc3448098b9a12fbac387637de2321": "honors", "df95e1c32f2094850cd7a466d5c5e43c8a0822b13c718db88fc5cfbac4946c5b": "regular", "a10e8d40dab5bb8fe9f3ada46b3103c20eb94a7124b17207582c3bfe3666aeba": "honors", "b08e8a306685bd7b9636934e923598da7286e8b48f6bf9929b50928ff534d803": "regular"}, {"f94c032d1c78c747324d1fce76024a163e24144f5d62f71f8a082f697f5da08d": "regular", "9464db2965d39efe6ee483c1385fe6500c21666cfeb3d789308b0f7070268669": "honors", "8838c7968e5d0b794b72d0eecb014329d76e72a6ce49ed0b03c7a7b130a554ac": "regular", "2b1bf126c359df6d4cc2bf22f3ea4797b4d72c126af7e2ca43a1c61bea6766b4": "honors", "36c398019c8a96193622c348ba7862a9ee96bb94d0c4b6dae4056103e365da2f": "regular"}, {"10d9e1877fcd5848c5990731b4d26ee5491b8b121f37566925d2d2493151e2e3": "regular", "87d1e6a259df5d15fbf6f22ceff1107fa2d5c755f226f51e997f739357c59df0": "honors", "b39e108167a8b3cd121315b5e8e93d267c38c96ff48218b41771e0683d8b7e9b": "regular", "7ab77f18fc5e6683ee382f5407707d15d9a5c05e18728d4052ecc207659362a3": "honors", "cd3e039f9c2728814ad3767362fffb750a7f94e3bf921affef277ab08fcba67d": "regular"}, {"cb95d10ba134f71a1a520d3075eb23c6bdf1f88bddec77e99d3e212e70270706": "regular", "7cbe9ec42a523ab1c4d48ce9a1c438e552041e6d68517b0aa8a4d69e4b8ed1eb": "honors", "b45dfb65edb1eb2e7f51fd21837d95c71284b6115a3834e6ce6b314217e78afa": "regular", "8c1351f8c1542c28798c7db88ab587cb17f35fbc4330c440316761e4f82fd9e7": "honors", "08db6deb1c4d98bf6839f1c5dfb2b6a02c39c1c998d5c59f7c48401f41c41bbc": "regular"}, {"76c1c57eeb4d95740fd0e06185584e1192ca2c12de31294d52ab1a8c8fcf9e17": "regular", "f015be17287c7dad6ce5cb056ad79f92853fe42500e81f9810ab4195ddcb31e7": "honors", "699dce254647e464ab568ffa66ee98db6fc9752e6d46d5cf27986a82df9b0692": "regular", "65fa90a9f1458b7784b391697f5a1d027a71966a3fc3d642041527dababe2c97": "honors", "cbf0d4f3cb37121d7bdaac263690f8e674ff6eaef6985f8fdc3c7d38fe562c49": "regular"}, {"fc1da2e59e92c1de9b9bbf84edbc4632ce779e6fc1c489196aac3ea412b2541a": "regular", "f6463d6b9dc99d17c568df5808e2e867075d04ac671bea65d1b8ff0196280c12": "honors", "5a4db198699ec73d2d622f1b9a2ae297ca16de67628fabca7f3d3c8130c150a2": "regular", "df1f32436adb1642a20c4fa06d270634d05b2846589a416699da991c419f10cf": "honors", "bbd1261484431498dbfb803a8e9d09be8253af341dc784f3b6bfe1806a29cf9d": "regular"}];           // [{hash:track,...}, ...]
+  // ==============================
+  var SKEY='sdsgate::'+location.pathname;
+  function winIndex(){return Math.floor((Date.now()-ANCHOR)/(WINDOW_DAYS*86400000));}
+  var gate=document.getElementById('sdsgate'),
+      inp=document.getElementById('sdsgate-pw'),
+      go=document.getElementById('sdsgate-go'),
+      msg=document.getElementById('sdsgate-msg');
+  function closeGate(){ if(gate&&gate.parentNode)gate.parentNode.removeChild(gate); document.documentElement.style.overflow=''; }
+  function reveal(track){
+    if(!ROUTE)return;
+    document.querySelectorAll('[data-track]').forEach(function(el){
+      if(el.getAttribute('data-track')===track){el.style.display='';}
+      else if(el.parentNode){el.parentNode.removeChild(el);}
+    });
+  }
+  function unlock(track){ try{sessionStorage.setItem(SKEY,track||'ok');}catch(e){} closeGate(); reveal(track); }
+  var prev=null; try{prev=sessionStorage.getItem(SKEY);}catch(e){}
+  if(prev){ closeGate(); reveal(prev); return; }
+  document.documentElement.style.overflow='hidden';
+  var w=winIndex(), table=(w>=0&&w<SCHEDULE.length)?SCHEDULE[w]:null;
+  if(!table){ inp.style.display='none'; go.style.display='none';
+    msg.textContent='These codes have expired. Please ask Mr. Stonis for the renewed version.'; return; }
+  function attempt(){
+    var v=(inp.value||'').trim().toLowerCase(); if(!v)return;
+    var h; try{h=sdsSha256(v);}catch(e){h=null;}
+    if(h&&table[h]){ msg.textContent=''; unlock(table[h]); }
+    else{ gate.classList.remove('shake'); void gate.offsetWidth; gate.classList.add('shake');
+      msg.textContent="That's not it — check with your teacher."; inp.select(); }
+  }
+  go.addEventListener('click',attempt);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')attempt();});
+  setTimeout(function(){try{inp.focus();}catch(e){}},60);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+<!-- SDS-GATE v1 END -->
+
+<div data-track="regular" style="display:none"><header class="head"><div class="wrap" style="padding-bottom:0"><div class="kick">Waukegan High School · U.S. History · Unit 2 Summative</div>
+<h1>Part II — Build Your Argument (C·E·V·R)</h1><div class="sub">Power &amp; Freedom in a Divided Nation · 1789–1877</div>
+<div class="ident"><span>Name</span><span>Period</span><span>Date</span></div></div></header>
+<main class="wrap">
+<div class="q"><div class="lab">Your Question</div><p>Did the United States keep its promise of freedom and power to your group between 1789 and 1877?</p></div>
+<p class="intro">You have studied how different groups experienced power and freedom during American expansion and the Civil War. Choose one group, study its Source Set, then plan your answer in the four boxes below. The last box turns your thinking into the first sentence of your paragraph.</p>
+<div style="font-weight:700;color:var(--ink);margin-top:6px">Step 1 — Choose one group:</div>
+<div class="choose"><span>White Americans (Set A)</span><span>African Americans (Set B)</span><span>Mexican Americans (Set C)</span><span>Native Americans (Set D)</span></div>
+<div style="font-weight:700;color:var(--ink);margin:16px 0 2px">Step 2 — Plan your argument in the four boxes. You need TWO pieces of evidence, ONE vocabulary term(s), and a paragraph of 5–6 sentences.</div>
+<div class="box"><div class="bt"><span class="n">1</span>CLAIM</div><div class="g">Your answer to the question — did America keep, break, or only partly keep its promise?</div><div class="s"><b>Sentence starter:</b> The United States ______ (kept / broke / only partly kept) its promise of freedom and power to ______ …</div><textarea class="wline" data-k="R1" rows="1"></textarea><textarea class="wline" data-k="R2" rows="1"></textarea></div><div class="box"><div class="bt"><span class="n">2</span>EVIDENCE</div><div class="g">TWO specific proofs — a law, event, quote, or number from Unit 2 or your Source Set.</div><div class="s"><b>Sentence starter:</b> For example, in ______ (year), ______ .</div><div class="s">A second example is ______ , when ______ .</div><div class="s">Source ___ shows that ______ .</div><textarea class="wline" data-k="R3" rows="1"></textarea><textarea class="wline" data-k="R4" rows="1"></textarea></div><div class="box"><div class="bt"><span class="n">3</span>VOCABULARY</div><div class="g">ONE Unit 2 term, used correctly.</div><div class="s"><b>Word bank:</b> abolition · secession · Reconstruction · Manifest Destiny · sectionalism · nullification · removal · suffrage · emancipation · compromise</div><textarea class="wline" data-k="R5" rows="1"></textarea></div><div class="box thesis"><div class="bt"><span class="n">4</span>REASONING → START YOUR THESIS</div><div class="g">Put it together in ONE strong sentence: state your answer AND why your evidence proves it. This becomes the first sentence of your paragraph.</div><div class="s"><b>Thesis frame:</b> Between 1789 and 1877, ______’s freedom and power ______ (grew / shrank / grew then narrowed), which shows that America ______ its promise, because ______ .</div><textarea class="wline" data-k="R6" rows="1"></textarea><textarea class="wline" data-k="R7" rows="1"></textarea></div>
+<div style="font-weight:700;color:var(--ink);margin:16px 0 4px">Step 3 — Write your paragraph. Start with your thesis sentence from Box 4, then add your evidence and reasoning.</div>
+<div class="box"><textarea class="wline" data-k="R8" rows="1"></textarea><textarea class="wline" data-k="R9" rows="1"></textarea><textarea class="wline" data-k="R10" rows="1"></textarea><textarea class="wline" data-k="R11" rows="1"></textarea><textarea class="wline" data-k="R12" rows="1"></textarea></div>
+<footer class="foot"><b>© 2026 ShadowDog Digital Studios. All Rights Reserved.</b><br>ShadowDog Digital Studios holds explicit rights to the design, text, and arrangement of this material. Source excerpts on the assessment are public domain and credited to their sources.</footer>
+</main></div>
+<div data-track="honors" style="display:none"><header class="head"><div class="wrap" style="padding-bottom:0"><div class="kick">Waukegan High School · U.S. History · Unit 2 Summative · Honors</div>
+<h1>Part II — Build Your Argument (C·E·V·R)</h1><div class="sub">Power &amp; Freedom in a Divided Nation · 1789–1877</div>
+<div class="ident"><span>Name</span><span>Period</span><span>Date</span></div></div></header>
+<main class="wrap">
+<div class="q"><div class="lab">Your Question</div><p>Did the United States keep its promise of freedom and power to your group between 1789 and 1877 — and what changed, and what stayed the same?</p></div>
+<p class="intro">You have studied how different groups experienced power and freedom during American expansion, the Civil War, and Reconstruction. Choose one group, study its Source Set, then plan your answer in the four boxes below. Your claim must address both change and continuity, and the last box turns your thinking into the first sentence of your argument.</p>
+<div style="font-weight:700;color:var(--ink);margin-top:6px">Step 1 — Choose one group:</div>
+<div class="choose"><span>White Americans (Set A)</span><span>African Americans (Set B)</span><span>Mexican Americans (Set C)</span><span>Native Americans (Set D)</span></div>
+<div style="font-weight:700;color:var(--ink);margin:16px 0 2px">Step 2 — Plan your argument in the four boxes. You need THREE pieces of evidence, TWO vocabulary term(s), and a paragraph of 6–8 sentences.</div>
+<div class="box"><div class="bt"><span class="n">1</span>CLAIM</div><div class="g">An arguable answer that names both what changed AND what stayed the same.</div><div class="s"><b>Sentence starter:</b> Although ______ stayed the same, by 1877 the United States had ______ (kept / broken / partly kept) its promise to ______ …</div><textarea class="wline" data-k="H1" rows="1"></textarea><textarea class="wline" data-k="H2" rows="1"></textarea></div><div class="box"><div class="bt"><span class="n">2</span>EVIDENCE</div><div class="g">THREE specific proofs — at least ONE from your Source Set, cited by label (e.g., “Source B2”).</div><div class="s"><b>Sentence starter:</b> Source ___ (year) shows that ______ .</div><div class="s">In ______ (year), ______ ; likewise, ______ .</div><div class="s">A third example is ______ .</div><textarea class="wline" data-k="H3" rows="1"></textarea><textarea class="wline" data-k="H4" rows="1"></textarea></div><div class="box"><div class="bt"><span class="n">3</span>VOCABULARY</div><div class="g">TWO Unit 2 terms, used correctly and in service of your argument.</div><div class="s"><b>Word bank:</b> abolition · secession · Reconstruction · Manifest Destiny · sectionalism · nullification · removal · suffrage · emancipation · compromise</div><textarea class="wline" data-k="H5" rows="1"></textarea></div><div class="box thesis"><div class="bt"><span class="n">4</span>REASONING → START YOUR THESIS</div><div class="g">Combine claim + evidence into ONE precise thesis sentence that names change, continuity, and why the evidence proves it. This opens your paragraph.</div><div class="s"><b>Thesis frame:</b> Between 1789 and 1877, ______’s power ______ while ______ stayed the same, proving that America ______ its promise — as seen in ______ and ______ .</div><textarea class="wline" data-k="H6" rows="1"></textarea><textarea class="wline" data-k="H7" rows="1"></textarea></div>
+<div style="font-weight:700;color:var(--ink);margin:16px 0 4px">Step 3 — Write your paragraph. Start with your thesis sentence from Box 4, then add your evidence and reasoning.</div>
+<div class="box"><textarea class="wline" data-k="H8" rows="1"></textarea><textarea class="wline" data-k="H9" rows="1"></textarea><textarea class="wline" data-k="H10" rows="1"></textarea><textarea class="wline" data-k="H11" rows="1"></textarea><textarea class="wline" data-k="H12" rows="1"></textarea></div>
+<footer class="foot"><b>© 2026 ShadowDog Digital Studios. All Rights Reserved.</b><br>ShadowDog Digital Studios holds explicit rights to the design, text, and arrangement of this material. Source excerpts on the assessment are public domain and credited to their sources.</footer>
+</main></div>
+
+<div id="sdsbar"><button id="sdsDL" type="button">&#8595; Save my work</button><button id="sdsRS" type="button">&#8635; Restore</button></div>
+<script>
+(function(){
+  var KEY='sdswork::'+location.pathname;
+  document.querySelectorAll('.line').forEach(function(d,i){
+    var ta=document.createElement('textarea'); ta.className='wline';
+    ta.setAttribute('data-k','L'+i); d.parentNode.replaceChild(ta,d);
+  });
+  var store={}; try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  function fields(){return document.querySelectorAll('[data-k]');}
+  function save(){var d={};fields().forEach(function(el){var k=el.getAttribute('data-k');d[k]=el.type==='checkbox'?el.checked:el.value;});try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
+  fields().forEach(function(el){var k=el.getAttribute('data-k');
+    if(el.type==='checkbox'){ if(store[k])el.checked=true; el.addEventListener('change',save);}
+    else{ if(store[k]!=null)el.value=store[k]; el.addEventListener('input',save);} });
+  var dl=document.getElementById('sdsDL');
+  dl.onclick=function(){save();var blob=new Blob([localStorage.getItem(KEY)||'{}'],{type:'application/json'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(location.pathname.split('/').pop()||'work').replace(/\.html?$/,'')+'-my-work.json';document.body.appendChild(a);a.click();a.remove();};
+  document.getElementById('sdsRS').onclick=function(){var inp=document.createElement('input');inp.type='file';inp.accept='application/json';
+    inp.onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);localStorage.setItem(KEY,JSON.stringify(d));
+      fields().forEach(function(el){var k=el.getAttribute('data-k');if(d[k]!=null){if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k];}});}catch(_){}};r.readAsText(f);};inp.click();};
+})();
+</script>
+
+<!-- SDS-HIGHLIGHTER v1 START -->
+<style id="sdshl-style">
+mark.sds-hl{background:#ffe066;color:#111;border-radius:2px;padding:0 .5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+body.sdshl-on mark.sds-hl{cursor:pointer}
+body.sdshl-on ::selection{background:#ffe066;color:#111}
+#sdshl-btn{position:fixed;right:14px;bottom:64px;z-index:140;border:1px solid #caa23a;background:rgba(20,22,20,.92);color:#ffe066;border-radius:999px;padding:9px 14px;font:600 13px/1 system-ui,-apple-system,sans-serif;cursor:pointer;display:flex;gap:7px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#sdshl-btn.on{background:#ffe066;color:#1a1205;border-color:#ffe066}
+#sdshl-btn .ic{font-size:15px;line-height:1}
+#sdshl-bar{position:fixed;right:14px;bottom:106px;z-index:140;background:rgba(20,22,20,.96);color:#eee;border:1px solid #444;border-radius:10px;padding:10px 12px;font:400 12px/1.45 system-ui,-apple-system,sans-serif;max-width:230px;display:none;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+#sdshl-btn.on ~ #sdshl-bar{display:block}
+#sdshl-bar b{color:#ffe066}
+#sdshl-bar button{margin-top:8px;background:none;border:1px solid #555;color:#ddd;border-radius:6px;padding:5px 9px;font:inherit;cursor:pointer}
+@media print{#sdshl-btn,#sdshl-bar{display:none!important}}
+</style>
+<button id="sdshl-btn" type="button" aria-pressed="false"><span class="ic">&#9998;</span><span class="lbl">Highlight</span></button>
+<div id="sdshl-bar">Highlighter is <b>on</b>. Select text to highlight it. Click a highlight to remove it. Your highlights save on this device.<br><button id="sdshl-clear">Clear all highlights</button></div>
+<script id="sdshl-js">
+(function(){
+  if(window.__sdsHL)return; window.__sdsHL=1;
+  var KEY='sdshl::'+location.pathname;
+  var btn=document.getElementById('sdshl-btn'), on=false;
+  function slides(){var s=document.querySelectorAll('.slide');return s.length?[].slice.call(s):[document.body];}
+  function okParent(p){return p && !p.closest('script,style,#sdshl-btn,#sdshl-bar,.topbar,.foot,.nav,.lb,.actbox,input,textarea,button');}
+  function textNodes(root){var a=[],w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    if(!n.nodeValue)return 2; if(!okParent(n.parentElement))return 2; return 1;}});var n;while(n=w.nextNode())a.push(n);return a;}
+  function slideText(sl){return textNodes(sl).map(function(n){return n.nodeValue;}).join('');}
+  function globalStart(sl,node){var t=textNodes(sl),p=0;for(var i=0;i<t.length;i++){if(t[i]===node)return p;p+=t[i].nodeValue.length;}return -1;}
+  function locate(sl,off){var t=textNodes(sl),p=0;for(var i=0;i<t.length;i++){var L=t[i].nodeValue.length;if(off<=p+L)return{node:t[i],off:off-p};p+=L;}var last=t[t.length-1];return last?{node:last,off:last.nodeValue.length}:null;}
+  function wrapRange(range){
+    var root=range.commonAncestorContainer; if(root.nodeType===3)root=root.parentNode;
+    var nodes=textNodes(root).filter(function(n){try{return range.intersectsNode(n);}catch(e){return false;}});
+    nodes.forEach(function(n){
+      var s=(n===range.startContainer)?range.startOffset:0;
+      var e=(n===range.endContainer)?range.endOffset:n.nodeValue.length;
+      if(e<=s)return;
+      var r=document.createRange();r.setStart(n,s);r.setEnd(n,e);
+      var m=document.createElement('mark');m.className='sds-hl';
+      try{r.surroundContents(m);}catch(err){}
+    });
+  }
+  function nthIndexOf(hay,needle,n){var idx=-1;for(var k=0;k<=n;k++){idx=hay.indexOf(needle,idx+1);if(idx<0)return -1;}return idx;}
+  function save(){
+    var out=[];
+    slides().forEach(function(sl,si){
+      var marks=sl.querySelectorAll('mark.sds-hl');if(!marks.length)return;
+      var full=slideText(sl);
+      marks.forEach(function(m){
+        var t=m.textContent;if(!t)return;
+        var inner=textNodes(m);if(!inner.length)return;
+        var gs=globalStart(sl,inner[0]);if(gs<0)return;
+        // occurrence index = how many times t appears before gs
+        var n=0,idx=-1;while(true){idx=full.indexOf(t,idx+1);if(idx<0||idx>=gs)break;n++;}
+        out.push({s:si,t:t,n:n});
+      });
+    });
+    try{localStorage.setItem(KEY,JSON.stringify(out));}catch(e){}
+  }
+  function apply(list){
+    var bySlide={};list.forEach(function(h){(bySlide[h.s]=bySlide[h.s]||[]).push(h);});
+    slides().forEach(function(sl,si){
+      var hs=bySlide[si];if(!hs)return;
+      if(sl.querySelector('mark.sds-hl'))return; // already applied
+      var full=slideText(sl);
+      hs.forEach(function(h){
+        var start=nthIndexOf(full,h.t,h.n);if(start<0)return;
+        var a=locate(sl,start),b=locate(sl,start+h.t.length);if(!a||!b)return;
+        var r=document.createRange();try{r.setStart(a.node,a.off);r.setEnd(b.node,b.off);}catch(e){return;}
+        wrapRange(r);
+      });
+    });
+  }
+  function load(){try{var l=JSON.parse(localStorage.getItem(KEY)||'[]');apply(l);}catch(e){}}
+  // interactions
+  btn.addEventListener('click',function(){on=!on;btn.classList.toggle('on',on);document.body.classList.toggle('sdshl-on',on);btn.setAttribute('aria-pressed',on);btn.querySelector('.lbl').textContent=on?'Highlighting':'Highlight';});
+  document.addEventListener('mouseup',function(e){
+    if(!on)return;
+    if(e.target.closest&&e.target.closest('#sdshl-btn,#sdshl-bar'))return;
+    var sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
+    var r=sel.getRangeAt(0);if(r.collapsed||!r.toString().trim())return;
+    // only within slide content
+    var anc=r.commonAncestorContainer;anc=anc.nodeType===3?anc.parentElement:anc;
+    if(!okParent(anc))return;
+    wrapRange(r);sel.removeAllRanges();save();
+  });
+  document.addEventListener('click',function(e){
+    if(!on)return;var m=e.target.closest&&e.target.closest('mark.sds-hl');if(!m)return;
+    e.preventDefault();e.stopPropagation();
+    var parent=m.parentNode;while(m.firstChild)parent.insertBefore(m.firstChild,m);parent.removeChild(m);parent.normalize();save();
+  },true);
+  var clr=document.getElementById('sdshl-clear');
+  if(clr)clr.addEventListener('click',function(){document.querySelectorAll('mark.sds-hl').forEach(function(m){var p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);p.normalize();});try{localStorage.removeItem(KEY);}catch(e){}});
+  // apply saved highlights after render
+  if(document.readyState==='complete')setTimeout(load,120);else window.addEventListener('load',function(){setTimeout(load,120);});
+})();
+</script>
+<!-- SDS-HIGHLIGHTER v1 END -->
+</body></html>
