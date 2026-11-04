@@ -94,12 +94,56 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
   .cap .desc{font-size:.9rem}
 }
 </style>
-</head>
+<style id="sdsact-gal">
+.slide.act{justify-content:flex-start;align-items:stretch;text-align:left;overflow-y:auto;padding:22px 64px 30px;
+  --hair:var(--line);--mut:var(--muted);--body:#3f3a36;--rust2:#8f3625;--panel:#fff;--gold:#c99a4a}
+.act .actin{max-width:820px;margin:0 auto;width:100%}
+.act .akick{color:var(--rust);text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;font-weight:600;margin:0 0 4px}
+.act h2{font-weight:400;font-size:clamp(1.5rem,4.4vw,2.1rem);margin:0 0 4px;font-family:Georgia,serif}
+.act .es{display:block;color:var(--muted);font-size:.86em;font-style:italic;font-weight:300}
+.act .adir{font-size:.98rem;color:var(--body);margin:10px 0 6px}
+.act .ident{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0 10px}
+.act .ident label{flex:1;min-width:140px;display:flex;gap:6px;align-items:flex-end;border-bottom:1px solid var(--line);padding-bottom:2px;font-size:.82rem;color:var(--muted)}
+.act .ident input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:500 .95rem var(--sans);color:var(--ink)}
+.act .box{border:1px solid var(--line);border-left:5px solid var(--rust);border-radius:10px;background:#fff;padding:14px 16px;margin:14px 0}
+.act .box.big{border-left-color:var(--gold)}
+.act .bt{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--rust2);font-size:1rem}
+.act .box.big .bt{color:#9a7016}
+.act .n{display:inline-grid;place-items:center;width:24px;height:24px;background:var(--rust);color:#fff;border-radius:6px;font-size:.8rem;font-weight:700}
+.act .box.big .n{background:var(--gold)}
+.act .ql{font-size:.9rem;color:var(--ink);font-weight:500;margin:12px 0 2px}
+.act .st{font-size:.84rem;color:var(--muted);background:var(--cream);border:1px dashed var(--line);border-radius:6px;padding:6px 9px;margin:4px 0}
+.act select,.act input.sm{font:400 .95rem var(--sans);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 9px;background:#fff;max-width:100%}
+.act select:focus,.act input.sm:focus{outline:none;border-color:var(--rust)}
+.act .wline{display:block;width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;font:400 .98rem/1.5 var(--sans);color:var(--ink);padding:3px 2px;margin:4px 0;resize:none;min-height:28px;overflow:hidden}
+.act .wline:focus{outline:none;border-bottom-color:var(--rust);background:#fffdf8}
+.act .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sdsact{margin:22px 0 6px;padding:16px 18px;border:1px solid var(--hair);border-left:5px solid var(--rust);border-radius:10px;background:#fff}
+.sdsact-h{font-family:Georgia,serif;font-size:1.15rem;color:var(--ink);margin-bottom:2px}
+.sdsact-steps{margin:6px 0 0;padding-left:20px;font-size:.9rem;color:var(--body)}.sdsact-steps li{margin:4px 0}
+.sdsact .bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sdsact .btn{font:600 .88rem var(--sans);padding:10px 16px;border-radius:9px;border:1px solid var(--rust);background:var(--rust);color:#fff;cursor:pointer}
+.sdsact .btn:hover{background:var(--rust2)}.sdsact .btn.ghost{background:transparent;color:var(--rust)}.sdsact .btn.ghost:hover{background:rgba(177,68,47,.08)}
+.savenote{font-size:.8rem;color:var(--muted);margin-top:10px}.savenote.ok{color:#2f6b43;font-weight:600}
+.topbar .tojob{margin-left:12px;border:1px solid var(--rust);background:var(--rust);color:#fff;border-radius:999px;padding:5px 11px;font:600 .7rem var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.topbar .tojob:hover{background:#8f3625}
+@media (max-width:620px){.slide.act{padding:14px 40px 24px}}
+@media print{
+  html,body{height:auto!important;overflow:visible!important;background:#fff}
+  .topbar,.prog,.nav,.lb,.sdsact{display:none!important}
+  .deck{position:static!important;display:block!important}
+  .slide{display:none!important}
+  .slide.act{display:block!important;position:static!important;overflow:visible!important;padding:0!important}
+  .foot{position:static!important;border:0;margin-top:14px}
+  .act .box{page-break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head>
 <body>
 <div class="topbar">
   <span class="bl">The Civil War</span>
   <span class="bc" id="seclabel">1861&ndash;1865</span>
-  <span class="br"><span id="cur">1</span> / 41</span>
+  <button class="tojob" type="button" id="toJob">&#9998; Assignment</button><span class="br"><span id="cur">1</span> / 42</span>
 </div>
 <div class="prog" id="prog"></div>
 
@@ -110,7 +154,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
   <p class="years">1861 &mdash; 1865</p>
   <div class="rule"></div>
   <p class="sub">A war told through the photographs, prints, and cartoons of the people who lived it.</p>
-  <p class="hint">Use the arrows, swipe, or your keyboard &larr; &rarr; to move through the gallery.</p>
+  <p class="hint">Use the arrows, swipe, or your keyboard &larr; &rarr; to move through the gallery.<br><b style="color:var(--rust)">Your assignment is on the last slide.</b></p>
   <p class="brand">ShadowDog Digital Studios</p>
 </section>
 <section class="slide essay">
@@ -480,6 +524,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
     <p class="brand" style="margin-top:28px">ShadowDog Digital Studios</p>
   </div>
 </section>
+<section class="slide act" id="assignment"><div class="actin"><p class="akick">Your Assignment · Context &amp; Time Order</p><h2>Photos in Time<span class="es">Tu tarea: Fotos en el tiempo</span></h2><div class="ident"><label>Name<input data-k="name" autocomplete="off"></label><label>Period<input data-k="period" autocomplete="off"></label><label>Date<input data-k="date" autocomplete="off"></label></div><p class="adir"><b>Directions:</b> Go back through the gallery and pick <b>THREE</b> images from <b>different parts</b> of the war (for example: a battle, camp life, the human cost, the end of the war). Fill in a box for each one. Then put your three images in time order and explain how the war changed.<span class="es">Instrucciones: Elige TRES imágenes de partes diferentes de la guerra. Llena un recuadro para cada una. Luego ponlas en orden de tiempo y explica cómo cambió la guerra.</span></p><div class="box"><div class="bt"><span class="n">1</span>Image 1<span class="es">&nbsp;· Imagen 1</span></div><div class="ql">Which image did you pick?<span class="es">¿Qué imagen elegiste?</span></div><select data-k="P1_pick" data-label="Image"><option value="">— choose one —</option><optgroup label="Command &amp; the Armies"><option>General Ulysses S. Grant at City Point</option><option>United States Colored Troops</option></optgroup><optgroup label="Major Battles"><option>The Siege of Vicksburg</option><option>The Battle of Chickamauga</option><option>Lookout Mountain, Tennessee</option><option>Lookout Mountain from the valley</option><option>Lookout Mountain summit</option><option>On the heights at Chattanooga</option></optgroup><optgroup label="Siege, Fort &amp; Camp Life"><option>“The Dictator” siege mortar</option><option>A heavy fort gun</option><option>A soldiers&#x27; bomb-proof camp</option><option>Winter quarters</option><option>Fortifications and abatis</option><option>A shell in the works</option><option>Sunday in camp</option><option>Officers and visitors in camp</option><option>The U.S. Sanitary Commission</option></optgroup><optgroup label="The Politics of War"><option>“The True Issue, or That&#x27;s What&#x27;s the Matter”</option><option>“Compromise with the South”</option><option>“The True Peace Commissioners”</option></optgroup><optgroup label="The Human Cost"><option>Dead at Little Round Top, Gettysburg</option><option>A dead soldier in the trenches</option><option>A burial party at Cold Harbor</option><option>Collecting the dead</option><option>A city in ruins</option><option>Among the ruins</option><option>A shelled house</option><option>Wrecking the railroads</option><option>Counting the losses</option></optgroup><optgroup label="The War Ends: Appomattox"><option>A flag of truce</option><option>The flag of truce</option><option>The McLean House</option><option>Appomattox Court House</option><option>Grant and Lee</option></optgroup><optgroup label="The Nation Mourns: Lincoln"><option>Lincoln&#x27;s second inauguration</option><option>The assassination</option><option>$100,000 reward</option><option>Justice at the gallows</option></optgroup></select><div class="row"><div><div class="ql">Year it was made (look at the caption):<span class="es">Año en que se hizo (mira el pie de foto):</span></div><input class="sm" data-k="P1_year" data-label="Year" placeholder="e.g. 1864" autocomplete="off" size="9"></div><div><div class="ql">What was it made to do?<span class="es">¿Para qué se hizo?</span></div><select data-k="P1_purpose" data-label="Made to"><option value="">— choose —</option><optgroup label="What was it made to do?"><option>To record (show what happened)</option><option>To mourn (remember the dead)</option><option>To persuade (change minds)</option><option>To sell (make money)</option></optgroup></select></div></div><div class="ql">1. What is HAPPENING in this image?<span class="es">1. ¿Qué está PASANDO en esta imagen?</span></div><div class="st">In this image, ______ is/are ______.</div><textarea class="wline" rows="1" data-k="P1_what" data-label="What is happening"></textarea><div class="ql">2. What was going on in the WAR at that time?<span class="es">2. ¿Qué pasaba en la GUERRA en ese momento?</span></div><div class="st">This was made in ______, when ______ was happening in the war.</div><textarea class="wline" rows="1" data-k="P1_context" data-label="What was going on in the war"></textarea></div><div class="box"><div class="bt"><span class="n">2</span>Image 2<span class="es">&nbsp;· Imagen 2</span></div><div class="ql">Which image did you pick?<span class="es">¿Qué imagen elegiste?</span></div><select data-k="P2_pick" data-label="Image"><option value="">— choose one —</option><optgroup label="Command &amp; the Armies"><option>General Ulysses S. Grant at City Point</option><option>United States Colored Troops</option></optgroup><optgroup label="Major Battles"><option>The Siege of Vicksburg</option><option>The Battle of Chickamauga</option><option>Lookout Mountain, Tennessee</option><option>Lookout Mountain from the valley</option><option>Lookout Mountain summit</option><option>On the heights at Chattanooga</option></optgroup><optgroup label="Siege, Fort &amp; Camp Life"><option>“The Dictator” siege mortar</option><option>A heavy fort gun</option><option>A soldiers&#x27; bomb-proof camp</option><option>Winter quarters</option><option>Fortifications and abatis</option><option>A shell in the works</option><option>Sunday in camp</option><option>Officers and visitors in camp</option><option>The U.S. Sanitary Commission</option></optgroup><optgroup label="The Politics of War"><option>“The True Issue, or That&#x27;s What&#x27;s the Matter”</option><option>“Compromise with the South”</option><option>“The True Peace Commissioners”</option></optgroup><optgroup label="The Human Cost"><option>Dead at Little Round Top, Gettysburg</option><option>A dead soldier in the trenches</option><option>A burial party at Cold Harbor</option><option>Collecting the dead</option><option>A city in ruins</option><option>Among the ruins</option><option>A shelled house</option><option>Wrecking the railroads</option><option>Counting the losses</option></optgroup><optgroup label="The War Ends: Appomattox"><option>A flag of truce</option><option>The flag of truce</option><option>The McLean House</option><option>Appomattox Court House</option><option>Grant and Lee</option></optgroup><optgroup label="The Nation Mourns: Lincoln"><option>Lincoln&#x27;s second inauguration</option><option>The assassination</option><option>$100,000 reward</option><option>Justice at the gallows</option></optgroup></select><div class="row"><div><div class="ql">Year it was made (look at the caption):<span class="es">Año en que se hizo (mira el pie de foto):</span></div><input class="sm" data-k="P2_year" data-label="Year" placeholder="e.g. 1864" autocomplete="off" size="9"></div><div><div class="ql">What was it made to do?<span class="es">¿Para qué se hizo?</span></div><select data-k="P2_purpose" data-label="Made to"><option value="">— choose —</option><optgroup label="What was it made to do?"><option>To record (show what happened)</option><option>To mourn (remember the dead)</option><option>To persuade (change minds)</option><option>To sell (make money)</option></optgroup></select></div></div><div class="ql">1. What is HAPPENING in this image?<span class="es">1. ¿Qué está PASANDO en esta imagen?</span></div><div class="st">In this image, ______ is/are ______.</div><textarea class="wline" rows="1" data-k="P2_what" data-label="What is happening"></textarea><div class="ql">2. What was going on in the WAR at that time?<span class="es">2. ¿Qué pasaba en la GUERRA en ese momento?</span></div><div class="st">This was made in ______, when ______ was happening in the war.</div><textarea class="wline" rows="1" data-k="P2_context" data-label="What was going on in the war"></textarea></div><div class="box"><div class="bt"><span class="n">3</span>Image 3<span class="es">&nbsp;· Imagen 3</span></div><div class="ql">Which image did you pick?<span class="es">¿Qué imagen elegiste?</span></div><select data-k="P3_pick" data-label="Image"><option value="">— choose one —</option><optgroup label="Command &amp; the Armies"><option>General Ulysses S. Grant at City Point</option><option>United States Colored Troops</option></optgroup><optgroup label="Major Battles"><option>The Siege of Vicksburg</option><option>The Battle of Chickamauga</option><option>Lookout Mountain, Tennessee</option><option>Lookout Mountain from the valley</option><option>Lookout Mountain summit</option><option>On the heights at Chattanooga</option></optgroup><optgroup label="Siege, Fort &amp; Camp Life"><option>“The Dictator” siege mortar</option><option>A heavy fort gun</option><option>A soldiers&#x27; bomb-proof camp</option><option>Winter quarters</option><option>Fortifications and abatis</option><option>A shell in the works</option><option>Sunday in camp</option><option>Officers and visitors in camp</option><option>The U.S. Sanitary Commission</option></optgroup><optgroup label="The Politics of War"><option>“The True Issue, or That&#x27;s What&#x27;s the Matter”</option><option>“Compromise with the South”</option><option>“The True Peace Commissioners”</option></optgroup><optgroup label="The Human Cost"><option>Dead at Little Round Top, Gettysburg</option><option>A dead soldier in the trenches</option><option>A burial party at Cold Harbor</option><option>Collecting the dead</option><option>A city in ruins</option><option>Among the ruins</option><option>A shelled house</option><option>Wrecking the railroads</option><option>Counting the losses</option></optgroup><optgroup label="The War Ends: Appomattox"><option>A flag of truce</option><option>The flag of truce</option><option>The McLean House</option><option>Appomattox Court House</option><option>Grant and Lee</option></optgroup><optgroup label="The Nation Mourns: Lincoln"><option>Lincoln&#x27;s second inauguration</option><option>The assassination</option><option>$100,000 reward</option><option>Justice at the gallows</option></optgroup></select><div class="row"><div><div class="ql">Year it was made (look at the caption):<span class="es">Año en que se hizo (mira el pie de foto):</span></div><input class="sm" data-k="P3_year" data-label="Year" placeholder="e.g. 1864" autocomplete="off" size="9"></div><div><div class="ql">What was it made to do?<span class="es">¿Para qué se hizo?</span></div><select data-k="P3_purpose" data-label="Made to"><option value="">— choose —</option><optgroup label="What was it made to do?"><option>To record (show what happened)</option><option>To mourn (remember the dead)</option><option>To persuade (change minds)</option><option>To sell (make money)</option></optgroup></select></div></div><div class="ql">1. What is HAPPENING in this image?<span class="es">1. ¿Qué está PASANDO en esta imagen?</span></div><div class="st">In this image, ______ is/are ______.</div><textarea class="wline" rows="1" data-k="P3_what" data-label="What is happening"></textarea><div class="ql">2. What was going on in the WAR at that time?<span class="es">2. ¿Qué pasaba en la GUERRA en ese momento?</span></div><div class="st">This was made in ______, when ______ was happening in the war.</div><textarea class="wline" rows="1" data-k="P3_context" data-label="What was going on in the war"></textarea></div><div class="box big"><div class="bt"><span class="n">&#9733;</span>Put Them in Order<span class="es">&nbsp;· Ponlas en orden</span></div><div class="ql">List your three images from FIRST (earliest) to LAST (latest):<span class="es">Escribe tus tres imágenes de la PRIMERA (más antigua) a la ÚLTIMA (más reciente):</span></div><div class="row"><label style="flex:1;min-width:180px;font-size:.85rem;color:var(--muted)">First<input class="sm" style="width:100%" data-k="ORD1" data-label="First" autocomplete="off"></label><label style="flex:1;min-width:180px;font-size:.85rem;color:var(--muted)">Next<input class="sm" style="width:100%" data-k="ORD2" data-label="Next" autocomplete="off"></label><label style="flex:1;min-width:180px;font-size:.85rem;color:var(--muted)">Last<input class="sm" style="width:100%" data-k="ORD3" data-label="Last" autocomplete="off"></label></div><div class="ql">How did the war CHANGE from your first image to your last?<span class="es">¿Cómo CAMBIÓ la guerra desde tu primera imagen hasta la última?</span></div><div class="st">At first, the war ______. Later, ______. By the end, ______. This shows the war changed because ______.</div><textarea class="wline" rows="1" data-k="PQ1" data-label="How the war changed"></textarea><textarea class="wline" rows="1" data-k="PQ2" data-label="How the war changed (cont.)"></textarea></div><section class="sdsact"><div class="sdsact-h">How to turn it in <span class="es">Cómo entregarlo</span></div><ol class="sdsact-steps"><li><b>Upload a PDF:</b> press <b>Print / Save as PDF</b>, choose <i>Save as PDF</i>, then upload that file to <b>Google Classroom</b>.</li><li><b>On paper:</b> press <b>Print / Save as PDF</b> and print it, then hand it to Mr. Stonis.</li><li><b>Come back later:</b> your work saves automatically on this computer &mdash; close the tab and pick up where you left off.</li></ol><div class="bar"><button class="btn" type="button" data-act="print">&#128424; Print / Save as PDF</button><button class="btn ghost" type="button" data-act="download">&#11123; Download my answers</button><button class="btn ghost" type="button" data-act="backup">&#11123; Save a backup file</button><button class="btn ghost" type="button" data-act="restore">&#11119; Restore a backup</button><button class="btn ghost" type="button" data-act="clear">Clear</button></div><div class="savenote"></div></section></div></section>
 </div>
 
 <button class="nav prev" id="prev" aria-label="Previous">&#8249;</button>
@@ -509,13 +554,13 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
   }
   prev.addEventListener('click',function(){show(i-1);});
   next.addEventListener('click',function(){show(i+1);});
-  document.addEventListener('keydown',function(e){
+  document.addEventListener('keydown',function(e){if(e.target&&e.target.closest&&e.target.closest('input,textarea,select'))return;
     if(e.key==='ArrowRight'||e.key==='PageDown'){show(i+1);}
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){show(i-1);}
     else if(e.key==='Home'){show(0);} else if(e.key==='End'){show(N-1);}
   });
   var x0=null;
-  document.getElementById('deck').addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  document.getElementById('deck').addEventListener('touchstart',function(e){if(e.target.closest&&e.target.closest('.act')){x0=null;return;}x0=e.touches[0].clientX;},{passive:true});
   document.getElementById('deck').addEventListener('touchend',function(e){
     if(x0===null)return; var dx=e.changedTouches[0].clientX-x0;
     if(Math.abs(dx)>45){ dx<0?show(i+1):show(i-1); } x0=null;
@@ -531,6 +576,48 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);f
   lb.addEventListener('click',function(e){ if(e.target!==lbImg) closeLB(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('on')) closeLB(); });
   show(i);
+ var tj=document.getElementById('toJob');if(tj)tj.addEventListener('click',function(){show(N-1);});
+})();
+</script>
+<input type="file" id="sdsActFile" accept="application/json" style="display:none">
+<script id="sdsact-js">
+(function(){
+  var KEY='sdswork::'+location.pathname;
+  var A={}; try{A=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){A={};}
+  function store(){try{localStorage.setItem(KEY,JSON.stringify(A));}catch(e){}}
+  function note(m,ok){document.querySelectorAll('.savenote').forEach(function(n){n.textContent=m;n.classList.toggle('ok',!!ok);});}
+  function fields(){return document.querySelectorAll('.act [data-k]');}
+  function grow(t){if(t.tagName!=='TEXTAREA')return;t.style.height='auto';if(t.scrollHeight)t.style.height=t.scrollHeight+'px';}
+  function growAll(){document.querySelectorAll('.act textarea').forEach(grow);}
+  var restored=false;
+  fields().forEach(function(el){var k=el.getAttribute('data-k');
+    if(A[k]!=null&&A[k]!==''){el.value=A[k];restored=true;}
+    function upd(){A[k]=el.value;store();grow(el);note('Saved ✓ · '+new Date().toLocaleTimeString(),true);}
+    el.addEventListener('input',upd); el.addEventListener('change',upd);});
+  note(restored?'✓ Your saved work was restored. It saves automatically as you type — you can close the tab and come back.'
+               :'Your work saves automatically as you type — you can close the tab and come back on this computer.');
+  window.addEventListener('beforeprint',growAll);
+  document.addEventListener('click',function(){setTimeout(growAll,30);});
+  function txt(n){if(!n)return '';var c=n.cloneNode(true);c.querySelectorAll('.es,.n').forEach(function(x){x.remove();});return c.textContent.replace(/\s+/g,' ').trim();}
+  function val(k){var e=document.querySelector('.act [data-k="'+k+'"]');return e?e.value:'';}
+  function collect(){
+    var L=[(document.querySelector('.act h2')?txt(document.querySelector('.act h2')):document.title).toUpperCase(),'',
+           'Name: '+val('name')+'   Period: '+val('period')+'   Date: '+val('date')], last=null;
+    fields().forEach(function(el){var k=el.getAttribute('data-k'); if(k==='name'||k==='period'||k==='date')return;
+      var box=el.closest('.box'); var g=box?txt(box.querySelector('.bt')):''; if(g!==last){L.push('','──────────',g);last=g;}
+      var lab=el.getAttribute('data-label')||''; L.push((lab?lab+': ':'')+(el.value&&el.value.trim()?el.value:'(blank)'));});
+    return L.join('\n');}
+  function base(){var n=(val('name')||'student').replace(/[^\w]+/g,'_').replace(/^_+|_+$/g,'');return 'civil_war_photographs_'+n;}
+  function dl(name,text,type){var b=new Blob([text],{type:type});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);}
+  var file=document.getElementById('sdsActFile');
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-act]');if(!b)return;var a=b.getAttribute('data-act');
+    if(a==='print'){growAll();window.print();}
+    else if(a==='download'){dl(base()+'.txt',collect(),'text/plain');note('Downloaded a copy of your work ✓',true);}
+    else if(a==='backup'){dl(base()+'_backup.json',JSON.stringify(A),'application/json');note('Backup file saved ✓',true);}
+    else if(a==='restore'){file.click();}
+    else if(a==='clear'){if(confirm('Clear all your answers on this device? (Download a copy first if you want to keep them.)')){A={};store();location.reload();}}});
+  file.addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var d=JSON.parse(r.result);for(var k in d)A[k]=d[k];store();location.reload();}catch(x){note('Could not read that backup file.',false);}};r.readAsText(f);});
 })();
 </script>
 </body>
