@@ -49,6 +49,25 @@ p{margin:0 0 12px}
 .foot b{color:var(--rust);text-transform:uppercase;letter-spacing:.05em;font-size:10.5px}
 @media print{body{background:#fff}.head{border-radius:0}.card:hover{box-shadow:none}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}h2,.grouphd{page-break-after:avoid}.card,.log,.req{page-break-inside:avoid}}
 </style>
+<style id="sdsact-style">
+.ident label{flex:1;min-width:120px;display:flex;gap:6px;align-items:flex-end;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:2px;font-size:13px}
+.ident input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:#fff;font:600 14px/1.2 inherit;padding:0 2px}
+.ttin{border:0;border-bottom:1px solid var(--hair);background:transparent;font:inherit;color:var(--ink);min-width:200px;padding:1px 3px}
+.ttin:focus{outline:none;border-bottom-color:var(--rust)}
+textarea.wline{overflow:hidden}
+.sdsact{margin:28px 0 10px;padding:18px 20px;border:1px solid var(--hair);border-left:5px solid var(--rust);border-radius:10px;background:var(--panel,#fff)}
+.sdsact-h{font-family:Georgia,serif;font-size:19px;color:var(--ink);margin-bottom:4px}
+.sdsact-steps{margin:6px 0 0;padding-left:20px;font-size:14px;color:var(--body)}
+.sdsact-steps li{margin:5px 0}
+.sdsact .bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.sdsact .btn{font:inherit;font-weight:700;font-size:14px;letter-spacing:.01em;padding:11px 18px;border-radius:9px;border:1px solid var(--rust);background:var(--rust);color:#fff;cursor:pointer}
+.sdsact .btn:hover{background:var(--rust2,#8f3625)}
+.sdsact .btn.ghost{background:transparent;color:var(--rust)}
+.sdsact .btn.ghost:hover{background:rgba(177,68,47,.08)}
+.savenote{font-size:12.5px;color:var(--mut);margin-top:12px}
+.savenote.ok{color:#2f6b43;font-weight:700}
+@media print{.sdsact,#sdsbar,#sdsgate,#sdshl-btn,#sdshl-bar{display:none!important}.ttin{border-bottom:1px solid #999}}
+</style>
 </head>
 <body>
 <header class="head">
@@ -57,7 +76,7 @@ p{margin:0 0 12px}
     <div class="kick">Waukegan High School · U.S. History · Unit 2 · A House Divided</div>
     <h1>The Civil War — Choose Your Path</h1>
     <div class="sub">Study stations from the Unit 2 hub · 1861–1865</div>
-    <div class="ident"><span>Name</span><span>Period</span><span>Date</span></div>
+    <div class="ident"><label>Name<input data-k="name" autocomplete="off" aria-label="Name"></label><label>Period<input data-k="period" autocomplete="off" aria-label="Period"></label><label>Date<input data-k="date" autocomplete="off" aria-label="Date"></label></div>
   </div>
 </header>
 <main class="wrap">
@@ -124,26 +143,26 @@ p{margin:0 0 12px}
     <div class="line"></div><div class="line small"></div>
   </div>
   <!-- four choice slots -->
-  <div class="log"><div class="tt">Topic 1: __________________________</div>
+  <div class="log"><div class="tt">Topic 1: <input class="ttin" data-k="T1" placeholder="name the topic" autocomplete="off"></div>
     <div class="ql">One thing I learned:</div><div class="line"></div>
     <div class="ql">One source in it, and what it shows:</div><div class="line"></div>
     <div class="ql">One question I still have:</div><div class="line small"></div></div>
-  <div class="log"><div class="tt">Topic 2: __________________________</div>
+  <div class="log"><div class="tt">Topic 2: <input class="ttin" data-k="T2" placeholder="name the topic" autocomplete="off"></div>
     <div class="ql">One thing I learned:</div><div class="line"></div>
     <div class="ql">One source in it, and what it shows:</div><div class="line"></div>
     <div class="ql">One question I still have:</div><div class="line small"></div></div>
-  <div class="log"><div class="tt">Topic 3: __________________________</div>
+  <div class="log"><div class="tt">Topic 3: <input class="ttin" data-k="T3" placeholder="name the topic" autocomplete="off"></div>
     <div class="ql">One thing I learned:</div><div class="line"></div>
     <div class="ql">One source in it, and what it shows:</div><div class="line"></div>
     <div class="ql">One question I still have:</div><div class="line small"></div></div>
-  <div class="log"><div class="tt">Topic 4: __________________________</div>
+  <div class="log"><div class="tt">Topic 4: <input class="ttin" data-k="T4" placeholder="name the topic" autocomplete="off"></div>
     <div class="ql">One thing I learned:</div><div class="line"></div>
     <div class="ql">One source in it, and what it shows:</div><div class="line"></div>
     <div class="ql">One question I still have:</div><div class="line small"></div></div>
 
   <h2><span class="badge">5</span> Turn it in</h2>
   <div class="rule"></div>
-  <p><b>Chromebook:</b> type your answers, save or screenshot this page, and upload it to <b>Google Classroom</b>. <b>On paper:</b> print this sheet, fill it in by hand, and hand it to Mr. Stonis.</p>
+  <section class="sdsact"><ol class="sdsact-steps"><li><b>Upload a PDF:</b> press <b>Print / Save as PDF</b>, choose <i>Save as PDF</i> as the printer, then upload that file to <b>Google Classroom</b>.</li><li><b>On paper:</b> press <b>Print / Save as PDF</b> and print it, then hand it to Mr. Stonis.</li><li><b>Come back later:</b> your work saves automatically on this computer as you type &mdash; close the tab and pick up right where you left off.</li></ol><div class="bar"><button class="btn" type="button" data-act="print">&#128424; Print / Save as PDF</button><button class="btn ghost" type="button" data-act="download">&#11123; Download my answers</button><button class="btn ghost" type="button" data-act="backup">&#11123; Save a backup file</button><button class="btn ghost" type="button" data-act="restore">&#11119; Restore a backup</button><button class="btn ghost" type="button" data-act="clear">Clear</button></div><div class="savenote"></div></section>
 
   <footer class="foot">
     <b>© 2026 ShadowDog Digital Studios. All Rights Reserved.</b><br>
@@ -163,36 +182,79 @@ p{margin:0 0 12px}
 #sdsbar button:hover{border-color:var(--rust)}
 @media print{#sdsbar,#sdshl-btn,#sdshl-bar{display:none!important}.wline{border-bottom:1px solid #bbb}}
 </style>
-<div id="sdsbar"><button id="sdsDL" type="button">&#8595; Save my work</button><button id="sdsRS" type="button">&#8635; Restore</button></div>
-<script>
+<input type="file" id="sdsActFile" accept="application/json" style="display:none">
+<script id="sdsact-js">
 (function(){
-  var KEY='sdswork::'+location.pathname;
-  // turn blank write lines into text areas (choice board)
+  var KEY='sdswork::'+location.pathname;   // same key as before: earlier work carries over
   document.querySelectorAll('.line').forEach(function(d,i){
     var ta=document.createElement('textarea'); ta.className='wline'+(d.classList.contains('small')?' small':'');
-    ta.setAttribute('data-k','L'+i); d.parentNode.replaceChild(ta,d);
+    ta.rows=1; ta.setAttribute('data-k','L'+i); d.parentNode.replaceChild(ta,d);
   });
-  // give the study-guide checklist real, saveable checkboxes
   document.querySelectorAll('.check li').forEach(function(li,i){
     if(li.querySelector('.chk'))return; li.classList.add('hasbox');
     var c=document.createElement('input'); c.type='checkbox'; c.className='chk'; c.setAttribute('data-k','C'+i);
     li.insertBefore(c, li.firstChild);
   });
-  var store={}; try{store=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  var A={}; try{A=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){A={};}
+  function store(){try{localStorage.setItem(KEY,JSON.stringify(A));}catch(e){}}
+  function note(m,ok){document.querySelectorAll('.savenote').forEach(function(n){n.textContent=m;n.classList.toggle('ok',!!ok);});}
   function fields(){return document.querySelectorAll('[data-k]');}
-  function save(){var d={};fields().forEach(function(el){var k=el.getAttribute('data-k');d[k]=el.type==='checkbox'?el.checked:el.value;});try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}}
-  fields().forEach(function(el){var k=el.getAttribute('data-k');
-    if(el.type==='checkbox'){ if(store[k])el.checked=true; el.addEventListener('change',save);}
-    else{ if(store[k]!=null)el.value=store[k]; el.addEventListener('input',save);} });
-  var dl=document.getElementById('sdsDL');
-  dl.onclick=function(){save();var blob=new Blob([localStorage.getItem(KEY)||'{}'],{type:'application/json'});
-    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(location.pathname.split('/').pop()||'work').replace(/\.html?$/,'')+'-my-work.json';document.body.appendChild(a);a.click();a.remove();};
-  document.getElementById('sdsRS').onclick=function(){var inp=document.createElement('input');inp.type='file';inp.accept='application/json';
-    inp.onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);localStorage.setItem(KEY,JSON.stringify(d));
-      fields().forEach(function(el){var k=el.getAttribute('data-k');if(d[k]!=null){if(el.type==='checkbox')el.checked=!!d[k];else el.value=d[k];}});}catch(_){}};r.readAsText(f);};inp.click();};
+  function grow(t){if(t.tagName!=='TEXTAREA')return;t.style.height='auto';if(t.scrollHeight)t.style.height=t.scrollHeight+'px';}
+  function growAll(){document.querySelectorAll('textarea.wline').forEach(grow);}
+  var restored=false;
+  fields().forEach(function(el){
+    var k=el.getAttribute('data-k');
+    if(el.type==='checkbox'){ if(A[k]){el.checked=true;restored=true;}
+      el.addEventListener('change',function(){A[k]=el.checked;store();note('Saved ✓ · '+new Date().toLocaleTimeString(),true);}); }
+    else{ if(A[k]!=null&&A[k]!==''){el.value=A[k];restored=true;}
+      el.addEventListener('input',function(){A[k]=el.value;store();grow(el);note('Saved ✓ · '+new Date().toLocaleTimeString(),true);}); }
+  });
+  note(restored?'✓ Your saved work was restored. It saves automatically as you type — you can close the tab and come back.'
+                :'Your work saves automatically as you type — you can close the tab and come back on this computer.');
+  window.addEventListener('load',function(){setTimeout(growAll,60);});
+  window.addEventListener('beforeprint',growAll);
+  try{new MutationObserver(function(){growAll();}).observe(document.body,{childList:true});}catch(e){}
+
+  function txt(n){return n?n.textContent.replace(/\s+/g,' ').trim():'';}
+  function group(el){
+    var g=el.closest('.log,.box,.check'); if(!g)return '';
+    var h=g.querySelector('.tt,.bt'); if(!h)return g.classList.contains('check')?'Final study checklist':'';
+    var t=txt(h).replace(/_{3,}/g,'').trim(); var nb=h.querySelector('.n'); if(nb){var nt=txt(nb);t=nt+'. '+t.slice(nt.length).trim();} var i=h.querySelector('input'); if(i&&i.value)t+=' '+i.value;
+    return t;
+  }
+  function prompt(el){var p=el.previousElementSibling;
+    while(p&&!(p.classList&&p.classList.contains('ql'))){if(p.hasAttribute&&p.hasAttribute('data-k')){p=p.previousElementSibling;continue;}p=p.previousElementSibling;}
+    return p?txt(p):'';}
+  function val(k){var e=document.querySelector('[data-k="'+k+'"]');return e?e.value:'';}
+  function collect(){
+    var L=[document.title.toUpperCase(),'','Name: '+val('name')+'   Period: '+val('period')+'   Date: '+val('date')];
+    var last=null;
+    fields().forEach(function(el){
+      var k=el.getAttribute('data-k'); if(k==='name'||k==='period'||k==='date'||/^T\d/.test(k))return;
+      var g=group(el); if(g!==last){L.push('','──────────',g);last=g;}
+      if(el.type==='checkbox'){L.push((el.checked?'[x] ':'[ ] ')+txt(el.parentNode));return;}
+      var q=prompt(el); L.push((q?q+' ':'')+(el.value&&el.value.trim()?el.value:'(blank)'));
+    });
+    return L.join('\n');
+  }
+  function base(){var n=(val('name')||'student').replace(/[^\w]+/g,'_').replace(/^_+|_+$/g,'');
+    return (location.pathname.split('/').pop()||'work').replace(/\.html?$/,'')+'_'+n;}
+  function dl(name,text,type){var b=new Blob([text],{type:type});var u=URL.createObjectURL(b);var a=document.createElement('a');
+    a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1500);}
+  var file=document.getElementById('sdsActFile');
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-act]'); if(!b)return;
+    var a=b.getAttribute('data-act');
+    if(a==='print'){growAll();window.print();}
+    else if(a==='download'){dl(base()+'.txt',collect(),'text/plain');note('Downloaded a copy of your work ✓',true);}
+    else if(a==='backup'){dl(base()+'_backup.json',JSON.stringify(A),'application/json');note('Backup file saved ✓',true);}
+    else if(a==='restore'){file.click();}
+    else if(a==='clear'){if(confirm('Clear all your answers on this device? (Download a copy first if you want to keep them.)')){A={};store();location.reload();}}
+  });
+  file.addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var d=JSON.parse(r.result);for(var k in d)A[k]=d[k];store();location.reload();}catch(x){note('Could not read that backup file.',false);}};r.readAsText(f);});
 })();
 </script>
-
 <!-- SDS-HIGHLIGHTER v1 START -->
 <style id="sdshl-style">
 mark.sds-hl{background:#ffe066;color:#111;border-radius:2px;padding:0 .5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
